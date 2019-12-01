@@ -1,2 +1,4 @@
 ### Date Extraction 
-* Extracting text from the receipts image using tesseract ocr algorithm.Then extracting date(In various format) fromthe text using regular expression.
+* Preprocessing the receipts image using opencv(remove noise,changing dpi,etc).
+* Extracting the text using tesseract ocr algorithm.
+* Extracting the date from the text using regular expression.
