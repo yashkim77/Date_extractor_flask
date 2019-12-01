@@ -30,13 +30,11 @@ def extract_date():
         print('No file selected')
         return redirect(request.url)
     file1 = request.files['file1']
-    print(type(file1.filename))
     # if user does not select file, browser also
     # submit an empty part without filename
     if file1.filename == '':
         print('No selected file')
         return redirect(request.url)
-    print(allowed_file(file1.filename))
     if file1 and allowed_file(file1.filename):
         file1.save(os.path.join(app.config["UPLOAD_FOLDER"], file1.filename))
         fh = open("01.jpeg", "wb")
@@ -45,6 +43,7 @@ def extract_date():
         fh.write(decoded)
         fh.close()
         fr.close()
+	os.remove('static/'+file1.filename)
         date = date_extractor('01.jpeg')
                     
     return "Date:{}".format(date)
